@@ -2,7 +2,6 @@
 import web
 import json
 import os
-from subprocess import call
 urls = ('/.*', 'hooks')
 app = web.application(urls, globals())
 
@@ -13,7 +12,7 @@ class hooks:
 		#full_name is like gabrieloliveiranet/topweb-web
 		path = os.path.join(os.path.realpath(__file__).replace('server.py', ''), 'scripts', path[0], '{}.sh'.format(path[1]))
 		try:
-			call(path)
+			os.system(path)
 		except OSError:
 			raise OSError(u'{}: {}'.format('File not found: ', path))
 
