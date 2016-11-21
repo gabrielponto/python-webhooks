@@ -10,8 +10,11 @@ class hooks:
 		data = json.loads(web.data())
 		path = data['repository']['full_name'].split('/')
 		#full_name is like gabrieloliveiranet/topweb-web
-		print os.path.join('.', 'scripts', path[0], '{}.sh'.format(path[1]))
-		call(os.path.join('.', 'scripts', path[0], '{}.sh'.format(path[1])))
+		path = os.path.join('.', 'scripts', path[0], '{}.sh'.format(path[1]))
+		try:
+			call(path)
+		except OSError:
+			raise OSError('{}: {}'.format(u'Arquivo não encontrado: ', path))
 
 if __name__ == '__main__':
     app.run()
