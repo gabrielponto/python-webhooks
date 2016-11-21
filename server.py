@@ -15,7 +15,7 @@ class hooks:
 		try:
 			call(path)
 		except OSError:
-			raise OSError('{}: {}'.format(u'Arquivo não encontrado: ', path))
+			raise OSError(u'{}: {}'.format('File not found: ', path))
 
 if __name__ == '__main__':
     app.run()
